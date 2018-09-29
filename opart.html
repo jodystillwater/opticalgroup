@@ -78,23 +78,19 @@
         }
         drawLoop();
 
+        // TODO: add a text field to tell user to use spacebar
         // keydown opens mic, keyup closes it
-        // TODO: might want to change this UI
         $('body').on({
-          keydown: function(event) {
+          keypress: function(event) {
             if ((event.keyCode == 32) && (mic.state != "started")) {
               mic.open();
               console.log("opened mic");
             } else {
-              console.log(event.keyCode);
+              mic.close();
+              console.log("close mic");
             }
-          },
-          keyup: function(event) {
-          if ((event.keyCode == 32) && (mic.state != "stopped")) {
-            mic.close();
-            console.log("close mic");
           }
-        }});
+        });
       }
     </script>
 
