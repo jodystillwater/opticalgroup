@@ -2,13 +2,16 @@
 <html>
 
   <head>
-    <title>opticalgroup</title>
+    <title>OP ART</title>
     <link rel="stylesheet" href="opart.css">
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     crossorigin="anonymous"></script>
     <script src="js/lib/Tone.js"></script>
     <script src="js/lib/Interface.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
     <!-- custom cursor -->
     <script type="text/javascript">
       $(document).ready(function(){
@@ -17,19 +20,17 @@
           var h = $('#mycursor').outerHeight()
           $('#mycursor').css('left', e.clientX - w/2).css('top', e.clientY - h/2);
         });
-        $('.background').mousedown(function(){
-          $(this).css("backgroundColor", "black");
-        });
       });
     </script>
   </head>
 
   <body>
     <div id="Content" class="FullScreen">
-      <div id="Title"><h1>OpticalGroup</h1></div>
+      <div>OPTICAL ART</div>
     </div>
     <div class="background">
-      <div></div>
+      <div id="text">Op art was a major development of painting in the 1960s that used geometric forms to create optical effects.
+      <p>Op painting used a framework of purely geometric forms as the basis for its effects and also drew on colour theory and the physiology and psychology of perception.</p></div>
     </div>
     <div id="mycursor"></div>
 
@@ -93,6 +94,8 @@
         });
       }
     </script>
+
+    <style></style>
 
   </body>
 
