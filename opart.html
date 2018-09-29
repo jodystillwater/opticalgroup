@@ -6,12 +6,9 @@
     <link rel="stylesheet" href="opart.css">
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
     <script src="js/lib/Tone.js"></script>
     <script src="js/lib/Interface.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <!-- custom cursor -->
     <script type="text/javascript">
       $(document).ready(function(){
@@ -50,7 +47,6 @@
           "text" : "getUserMedia is not supported by your browser."
         }).appendTo("#Content");
       } else {
-
         var canvas = $("<canvas>").appendTo("#Content");
         var context = canvas.get(0).getContext("2d");
         context.canvas.width = canvas.width();
@@ -70,6 +66,8 @@
           context.lineWidth = 6;
           context.strokeStyle = "white";
           context.moveTo(0, (values[0] + 1) / 2 * canvasHeight);
+          // console.log(values);
+
           for (var i = 1, len = values.length; i < len; i++){
             var val = (values[i] + 1) / 2;
             var x = canvasWidth * (i / (len - 1));
@@ -80,18 +78,23 @@
         }
         drawLoop();
 
-        // TODO: change this button to trigger on keypress/keyup/keydown
-        Interface.Button({
-          type : "toggle",
-          text : "Open Mic",
-          activeText : "Close Mic",
-          start : function(){
-            mic.open();
+        // keydown opens mic, keyup closes it
+        // TODO: might want to change this UI
+        $('body').on({
+          keydown: function(event) {
+            if ((event.keyCode == 32) && (mic.state != "started")) {
+              mic.open();
+              console.log("opened mic");
+            } else {
+              console.log(event.keyCode);
+            }
           },
-          end : function(){
+          keyup: function(event) {
+          if ((event.keyCode == 32) && (mic.state != "stopped")) {
             mic.close();
+            console.log("close mic");
           }
-        });
+        }});
       }
     </script>
 
